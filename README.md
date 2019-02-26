@@ -1,2 +1,2 @@
 # java-collections
-Example usages of Java Collections
+Example usage of Java Collections
