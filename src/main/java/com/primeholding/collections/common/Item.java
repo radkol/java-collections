@@ -15,7 +15,11 @@ public class Item implements Comparable<Item>{
 	}
 
 	public static Item newItem() {
-		return new Item(RandomStringUtils.randomAlphabetic(RandomUtils.nextInt(2, 10)));
+		return new Item(RandomStringUtils.randomAlphabetic(RandomUtils.nextInt(5, 10)));
+	}
+
+	public static Item newItem(int length) {
+		return new Item(RandomStringUtils.randomAlphabetic(Math.abs(length)));
 	}
 
 	@Override
@@ -52,6 +56,6 @@ public class Item implements Comparable<Item>{
 			return false;
 		return true;
 	}
-	
-	
+
+
 }

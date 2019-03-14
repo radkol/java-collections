@@ -31,44 +31,15 @@ import com.primeholding.collections.common.Item;
 public class Run {
 
 	public static void main(String[] args) {
-		
+
 		heading("-----Default Usage----");
 		defaultUsage();
-		
+
 		heading("-----Iterator Usage----");
 		iteratorUsage();
-		
+
 		heading("-----List Iterator Usage----");
 		listIteratorUsage();
-	}
-
-	private static void listIteratorUsage() {
-		List<Item> source = new ArrayList<>();
-		source.add(Item.newItem());
-		source.add(Item.newItem());
-		source.add(Item.newItem());
-		source.add(Item.newItem());
-		source.add(Item.newItem());
-		
-		heading("print elements");
-		ListIterator<Item> listIterator = source.listIterator();
-		while(listIterator.hasNext()) {
-			Item next = listIterator.next();
-			objectSameLine(next + (listIterator.hasNext() ? ", " : ""));
-		}
-		empty();
-		heading("print elements backwards");
-		
-		while(listIterator.hasPrevious()) {
-			Item prev = listIterator.previous();
-			objectSameLine(prev + (listIterator.hasPrevious() ? ", " : ""));
-		}
-		
-		while(listIterator.hasNext()) {
-			Item next = listIterator.next();
-			objectSameLine(next + (listIterator.hasNext() ? ", " : ""));
-			listIterator.remove();
-		}
 	}
 
 	private static void iteratorUsage() {
@@ -89,7 +60,7 @@ public class Run {
 
 		empty();
 		heading("Visualize List removing issue while interating on it (fail fast)");
-		
+
 		iterator = source.iterator();
 
 		try {
@@ -104,15 +75,15 @@ public class Run {
 			heading("But here, list size will be reduced by one!");
 			heading("Size is " + source.size());
 		}
-		
+
 		heading("Valid way of removing elements");
-		
+
 		iterator = source.iterator();
 		while(iterator.hasNext()) {
 			iterator.next();
 			iterator.remove();
 		}
-		
+
 	}
 
 	private static void defaultUsage() {
@@ -136,9 +107,38 @@ public class Run {
 		heading("easy custom sorting - using Comparator");
 		Collections.sort(source, Comparator.comparing(item -> item.getName().length()));
 		object(source);
-		
+
 		heading("get exact element");
 		object(source.get(3));
+	}
+
+	private static void listIteratorUsage() {
+		List<Item> source = new ArrayList<>();
+		source.add(Item.newItem());
+		source.add(Item.newItem());
+		source.add(Item.newItem());
+		source.add(Item.newItem());
+		source.add(Item.newItem());
+
+		heading("print elements");
+		ListIterator<Item> listIterator = source.listIterator();
+		while(listIterator.hasNext()) {
+			Item next = listIterator.next();
+			objectSameLine(next + (listIterator.hasNext() ? ", " : ""));
+		}
+		empty();
+		heading("print elements backwards");
+
+		while(listIterator.hasPrevious()) {
+			Item prev = listIterator.previous();
+			objectSameLine(prev + (listIterator.hasPrevious() ? ", " : ""));
+		}
+
+		while(listIterator.hasNext()) {
+			Item next = listIterator.next();
+			objectSameLine(next + (listIterator.hasNext() ? ", " : ""));
+			listIterator.remove();
+		}
 	}
 
 }
